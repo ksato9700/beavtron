@@ -17,15 +17,23 @@ html
           a.brand(href='#') #{title}
           ul.nav.pull-right
             if account
-              li: a.profile(href='/signout') #{account.name}
+              li: a.profile(href='/profile') #{account.name}
+              li: a(href='/signout')
+                    img(src='http://connect.soundcloud.com/2/btn-disconnect-m.png')
             else
-              li: a(href='/signin') Sign-in with SoundCloud
+              li: a(href='/signin')
+                img(src='http://connect.soundcloud.com/2/btn-connect-sc-m.png')
+
 
           .nav-collapse.collapse
             ul.nav
               // li
 
-    block content
+    
+    .container
+      .hero-unit
+        block content
+
     script(src='http://code.jquery.com/jquery.js')
     script(src='/js/bootstrap.min.js')
 
