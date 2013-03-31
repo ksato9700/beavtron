@@ -3,7 +3,6 @@
 #
 express = require "express"
 routes = require "./routes"
-user = require "./routes/user"
 path = require "path"
 
 app = express()
@@ -24,7 +23,8 @@ app.configure "development", ->
   app.locals.pretty = true
 
 app.get "/", routes.index
-app.get "/users", user.list
+app.get "/signin", routes.signin
+app.get "/signout", routes.signout
 
 port = app.get("port")
 app.listen port, ->
