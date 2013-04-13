@@ -25,6 +25,7 @@ app.configure "development", ->
 app.get "/", routes.index
 app.get "/signin", routes.signin
 app.get "/signout", routes.signout
+app.get "/authorized", routes.authorized
 
 port = app.get("port")
 app.listen port, ->

@@ -17,7 +17,7 @@ html
           a.brand(href='#') #{title}
           ul.nav.pull-right
             if account
-              li: a.profile(href='/profile') #{account.name}
+              li: a.profile(href='/profile') #{account.full_name}
               li: a(href='/signout')
                     img(src='http://connect.soundcloud.com/2/btn-disconnect-m.png')
             else
