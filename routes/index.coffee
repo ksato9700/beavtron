@@ -1,7 +1,7 @@
 #
 # Copyright 2013 Kenichi Sato
 #
-otogumo = require 'otogumo/src/otogumo'
+otogumo = require 'otogumo/lib/otogumo'
 
 TITLE = "Beavtron"
 account = null
