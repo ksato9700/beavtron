@@ -1,25 +1,22 @@
 #
 # Copyright 2013 Kenichi Sato
 #
-otogumo = require 'otogumo/lib/otogumo'
 
 TITLE = "Beavtron"
 account = null
 
-client_id = process.env.SC_CLIENT_ID
-client_secret = process.env.SC_CLIENT_SECRET
-redirect_uri = process.env.SC_REDIRECT_URI
-
-client = new otogumo.Client client_id, client_secret
+sc_client = null
+sc_redirect_uri = process.env.SC_REDIRECT_URI
 
 exports.index = (req, res)->
-  console.log account
+  console.log req.session
   res.render "index",
     title: TITLE
-    account: account
 
 exports.signin = (req, res)->
-  res.redirect client.authorize_url redirect_uri
+  otogumo = require 'otogumo/lib/otogumo'
+  sc_client = new otogumo.Client process.env.SC_CLIENT_ID, process.env.SC_SOUNDCLOUD_CSEC
+  res.redirect client.authorize_url sc_redirect_uri
 
   #account =
   #  name: 'Ken Sato'
@@ -32,7 +29,7 @@ exports.signout = (req, res)->
 exports.authorized = (req, res)->
   code = req.query.code
   signed_up = req.query.signed_up
-  client.exchange_token code, redirect_uri, (err)->
+  client.exchange_token code, sc_redirect_uri, (err)->
     if err
       res.send 500, {error: err}
     else

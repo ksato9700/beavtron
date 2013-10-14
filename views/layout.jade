@@ -17,10 +17,10 @@ html
           a.navbar-brand(href='#') #{title}
         .collapse.navbar-collapse.navbar-ex1-collapse
           ul.nav.nav-bar-nav.navbar-right
-            if account
-              li: a.profile(href='/profile') #{account.full_name}
-              li: a(href='/signout')
-                    img(src='http://connect.soundcloud.com/2/btn-disconnect-m.png')
+            if session.account
+              li: a(href='/profile') #{session.account.name}
+              #  li: a(href='/signout')
+              #      img(src='http://connect.soundcloud.com/2/btn-disconnect-m.png')
             else
               li: a(href='/signin')
                 img(src='http://connect.soundcloud.com/2/btn-connect-sc-m.png')
